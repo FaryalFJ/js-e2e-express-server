@@ -19,4 +19,10 @@ steps:
 - script: |
     npm install
     npm run build
-  displayName: 'npm install and build'
+    npm run coverage
+  displayName: 'npm install, build and output coverage'
+
+- task: PublishCodeCoverageResults@1
+  inputs:
+    codeCoverageTool: Cobertura
+    summaryFileLocation: $(System.DefaultWorkingDirectory)/coverage/cobertura-coverage.xml
